@@ -88,5 +88,19 @@ with st.expander("About the System"):
     - Demographics (Age, Gender, Distance)
     - Clinical factors (Severity, Condition, Heart Rate, BP)
     
-    **Machine Learning:** The model utilizes the best performing classifier (e.g., Gradient Boosting / Random Forest) to evaluate patient conditions based on historical patterns.
+    **Machine Learning:** The model utilizes the best performing classifier to evaluate patient conditions based on historical patterns.
+    """)
+
+with st.expander("Machine Learning Models Evaluated"):
+    st.write("""
+    During the development of this system, **6 different Machine Learning models** were trained and evaluated to ensure the highest accuracy:
+    
+    1. **Logistic Regression:** A statistical model that estimates the probability of each priority class using a linear equation.
+    2. **K-Nearest Neighbors (KNN):** Predicts the priority by finding the most similar past patients (neighbors) based on their features.
+    3. **Decision Tree:** A flowchart-like model that makes decisions based on features (like severity and age) to classify the appointment.
+    4. **Random Forest:** An ensemble method that builds multiple decision trees and merges their results for more accurate and stable predictions.
+    5. **Gradient Boosting:** An advanced ensemble technique that builds trees sequentially, where each new tree corrects the errors of previous ones.
+    6. **Support Vector Machine (SVM):** Finds the optimal boundary (hyperplane) to separate the different priority classes in high-dimensional space.
+    
+    The system automatically selects and runs the **best performing model** to make these real-time predictions.
     """)
