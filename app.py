@@ -86,7 +86,7 @@ else:
     st.markdown("Here are some key insights from the historical appointment data used to train the machine learning models. This helps explain how different clinical factors influence the model's priority prediction.")
     
     # Create tabs for different insights
-    tab1, tab2, tab3 = st.tabs(["Condition Severity", "Age Distribution", "Feature Importance"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Condition Severity", "Age Distribution", "Feature Importance", "How ML is Used"])
     
     with tab1:
         st.markdown("### Condition Severity vs Priority")
@@ -102,6 +102,24 @@ else:
         st.markdown("### Model Feature Importance")
         st.image("eda_plots/feature_importance.png", use_column_width=True)
         st.caption("**Condition Severity** and **Systolic Blood Pressure** are the most influential factors in determining priority according to the Machine Learning model.")
+        
+    with tab4:
+        st.markdown("### 🧠 How the 6 ML Models are Used in this Project")
+        st.info("""
+        If you need to explain the architecture of this system, here is how the Machine Learning pipeline works:
+        
+        **1. Training Phase (`model_training.py`):**  
+        Behind the scenes, we trained **6 different algorithms** on historical patient data: *Logistic Regression, KNN, Decision Tree, Random Forest, Gradient Boosting, and SVM.* 
+        
+        **2. Model Selection:**  
+        The system compares all 6 models based on their **Accuracy and F1-Score**. It automatically selects the absolute best performer (which was Gradient Boosting in our latest run).
+        
+        **3. Saving the Model (`best_priority_model.pkl`):**  
+        The winning model is serialized and saved as a binary file. This means the model is "frozen" with its learned patterns, so we don't have to retrain it every time the website loads.
+        
+        **4. Real-time Prediction (`app.py`):**  
+        When you click **"Predict Priority"** on the sidebar, this website loads that `.pkl` file, feeds your inputted patient details into the winning ML model, and instantly displays the predicted priority!
+        """)
 
 # Additional Info
 with st.expander("About the System"):
