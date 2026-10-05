@@ -78,6 +78,30 @@ if st.sidebar.button("Predict Priority"):
             
         st.markdown("---")
         st.info("**Note:** This is a Machine Learning prediction and should support, not replace, clinical judgment.")
+else:
+    st.info("👈 Please enter the patient details in the sidebar and click **Predict Priority** to get started.")
+    
+    st.markdown("---")
+    st.subheader("📊 Exploratory Data Analysis & Insights")
+    st.markdown("Here are some key insights from the historical appointment data used to train the machine learning models. This helps explain how different clinical factors influence the model's priority prediction.")
+    
+    # Create tabs for different insights
+    tab1, tab2, tab3 = st.tabs(["Condition Severity", "Age Distribution", "Feature Importance"])
+    
+    with tab1:
+        st.markdown("### Condition Severity vs Priority")
+        st.image("eda_plots/severity_vs_priority.png", use_column_width=True)
+        st.caption("Patients with higher condition severity (4 or 5) are overwhelmingly classified as **High** priority.")
+        
+    with tab2:
+        st.markdown("### Age Distribution by Priority")
+        st.image("eda_plots/age_vs_priority.png", use_column_width=True)
+        st.caption("Older patients tend to be classified as **Medium** or **High** priority compared to younger patients.")
+        
+    with tab3:
+        st.markdown("### Model Feature Importance")
+        st.image("eda_plots/feature_importance.png", use_column_width=True)
+        st.caption("**Condition Severity** and **Systolic Blood Pressure** are the most influential factors in determining priority according to the Machine Learning model.")
 
 # Additional Info
 with st.expander("About the System"):
